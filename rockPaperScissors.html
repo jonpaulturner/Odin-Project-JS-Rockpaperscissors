@@ -26,8 +26,7 @@
             return playerInput;
         }
         else {
-            //TODO: This works if you just throw an error. How do I reprompt?
-            playerSelection();
+            return playerSelection();
         }
     }
 
@@ -105,7 +104,6 @@
         return('Your Score: ' + playerScore + ' Computer Score: ' + computerScore + ' Ties: '+ tieCount)
     }
     console.log(game())
-    //console.log(playRound(playerSelection(), computerSelection()))
   </script>
 </body>
 </html>
