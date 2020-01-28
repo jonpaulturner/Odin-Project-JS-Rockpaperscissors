@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+</head>
+<body></body>
+  <script>
+    //Establish options for game
+    let choices = ['rock', 'paper', 'scissors'];
+
+    //Generate random choice for the computer
+    function computerPlay(){
+
+        //Calculate random integer between 0 and 2
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max-min)) +min
+        }
+        return computerChoice= choices[getRandomInt(0,choices.length)];
+    }
+    //Prompt the player to choose an option
+    function playerSelection(){
+        let playerInput = prompt("Choose Rock, Paper, or Scissors");
+        if (choices.includes(playerInput.toLowerCase)){
+            return playerInput;
+        }
+        else {
+            playerSelection()
+        }
+    }
+
+    function playRound(playerSelection, computerSelection {
+        
+    }
+    console.log(computerPlay())
+    //console.log(playRound(playerSelection, computerSelection))
+  </script>
+</body>
+</html>
