@@ -6,11 +6,9 @@
 </head>
 <body></body>
   <script>
-    //Establish options for game
     let choices = ['rock', 'paper', 'scissors'];
-
     //Generate random choice for the computer
-    function computerPlay(){
+    function computerSelection(){
 
         //Calculate random integer between 0 and 2
         function getRandomInt(min, max) {
@@ -20,22 +18,94 @@
         }
         return computerChoice= choices[getRandomInt(0,choices.length)];
     }
+
     //Prompt the player to choose an option
     function playerSelection(){
         let playerInput = prompt("Choose Rock, Paper, or Scissors");
-        if (choices.includes(playerInput.toLowerCase)){
+        if (choices.includes(playerInput.toLowerCase())){
             return playerInput;
         }
         else {
-            playerSelection()
+            //TODO: This works if you just throw an error. How do I reprompt?
+            playerSelection();
         }
     }
 
-    function playRound(playerSelection, computerSelection {
-        
+    function playRound(playerSelection, computerSelection) {
+        let result;
+
+        //Check to see who won
+        //NOTE: This may be better as a dict with the possible options?
+        switch (playerSelection) {
+            case 'rock':
+                switch (computerSelection) {
+                    case 'scissors':
+                        result = 'win';
+                        break;
+                    case 'paper':
+                        result = 'lose';
+                        break;
+                    case 'rock':
+                        result = 'tie';
+                        break;
+                }
+                break;
+
+            case 'paper':
+                switch (computerSelection) {
+                    case 'scissors':
+                        result = 'lose';
+                        break;
+                    case 'paper':
+                        result = 'tie';
+                        break;
+                    case 'rock':
+                        result = 'win'
+                        break;
+                }
+                break;    
+            
+            case 'scissors':
+                switch (computerSelection) {
+                    case 'scissors':
+                        result = 'tie';
+                        break;
+                    case 'paper':
+                        result = 'win';
+                        break;
+                    default:
+                        result = 'lose';
+                        break;
+                }
+                break;
+                
+            default:
+                console.error("Something went wrong..."); 
+                break;
+        }
+        return result
     }
-    console.log(computerPlay())
-    //console.log(playRound(playerSelection, computerSelection))
+
+    function game(){
+        let gameCount = 0, playerScore = 0, computerScore = 0, tieCount = 0;
+        while (gameCount < 5){
+            result = playRound(playerSelection(), computerSelection());
+            console.log(result);
+            if (result == 'win'){
+                playerScore += 1;
+            }
+            else if (result == 'lose'){
+                computerScore += 1;
+            }
+            else {
+                tieCount += 1;
+            }
+            gameCount += 1;
+        }
+        return('Your Score: ' + playerScore + ' Computer Score: ' + computerScore + ' Ties: '+ tieCount)
+    }
+    console.log(game())
+    //console.log(playRound(playerSelection(), computerSelection()))
   </script>
 </body>
 </html>
